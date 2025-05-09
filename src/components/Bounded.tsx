@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 type BoundedProps = {
-  as?: React.ElementType;
+  as?: React.ElementType<{ children?: React.ReactNode }>;
   className?: string;
   children: React.ReactNode;
 };
