@@ -1,49 +1,22 @@
 import React from "react";
 import clsx from "clsx";
 
-type AsProp<C extends React.ElementType> = {
-  /** The element or component to render as */
-  as?: C;
-};
-
-type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
-
-/**
- * Build the props for a polymorphic component:
- *  - Your own props (P) plus `as`, plus
- *  - all props of C, *except* the ones you’re overriding (`as`, `children`, etc.)
- */
-type PolymorphicProps<C extends React.ElementType, P> = React.PropsWithChildren<
-  P & AsProp<C>
-> &
-  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, P>>;
-
-type BoundedOwnProps = {
+type BoundedProps<T extends React.ElementType> = {
+  as?: T;
   className?: string;
-};
-
-/**
- * Our final props:
- *  - can pass `as="a"` or `as={MyComponent}`
- *  - can pass `className`
- *  - will get full intrinsic props of the chosen `as` *minus* `as`/`children`
- *  - children is exactly ReactNode
- */
-type BoundedProps<C extends React.ElementType = "section"> = PolymorphicProps<
-  C,
-  BoundedOwnProps
->;
+  children: React.ReactNode;
+} & Omit<React.ComponentPropsWithoutRef<T>, "as" | "children">;
 
 const Bounded = React.forwardRef(
-  <C extends React.ElementType = "section">(
-    props: BoundedProps<C>,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ref: React.Ref<any>
+  <T extends React.ElementType = "section">(
+    {
+      as: Comp = "section",
+      className,
+      children,
+      ...restProps
+    }: BoundedProps<T>,
+    ref: React.ForwardedRef<React.ComponentRef<T>>
   ) => {
-    const { as, className, children, ...restProps } = props;
-
-    const Comp = as ?? "section";
-
     return (
       <Comp
         ref={ref}
@@ -54,7 +27,9 @@ const Bounded = React.forwardRef(
       </Comp>
     );
   }
-);
+) as <T extends React.ElementType = "section">(
+  props: BoundedProps<T> & { ref?: React.ForwardedRef<React.ComponentRef<T>> }
+) => React.ReactElement;
 
 Bounded.displayName = "Bounded";
 
