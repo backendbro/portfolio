@@ -1,0 +1,62 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "something",
+				"type": "Text"
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "write",
+				"type": "Text"
+			},
+			"button_link": {
+				"key": "4a92865d-3f53-4045-a48b-51a779eebdfa",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "breakfast"
+				}
+			},
+			"avatar": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
+					"width": 4024,
+					"height": 4024
+				},
+				"url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
+				"width": 4024,
+				"height": 4024,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "environment",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laboris dolor dolore proident eiusmod laborum non nisi Lorem officia consequat sint aliqua commodo. Nostrud nisi cillum ullamco aliqua cillum laboris incididunt ea sunt qui. Id magna anim Lorem minim aliqua officia anim voluptate amet nisi eu magna."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

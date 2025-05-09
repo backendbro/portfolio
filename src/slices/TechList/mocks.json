@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "four",
+				"type": "Text"
+			},
+			"zone": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"tech_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "hurt",
+									"type": "Text"
+								}
+							],
+							[
+								"tech_color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#2fdc28",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

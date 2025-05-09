@@ -1,0 +1,57 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "search",
+				"type": "Text"
+			},
+			"content_type": {
+				"__TYPE__": "FieldContent",
+				"value": "Project",
+				"type": "Select"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim adipisicing minim est mollit est voluptate nulla sit ipsum. Voluptate esse occaecat esse laborum dolore amet do ad laborum quis deserunt cupidatat."
+						}
+					}
+				]
+			},
+			"view_more_text": {
+				"__TYPE__": "FieldContent",
+				"value": "poetry",
+				"type": "Text"
+			},
+			"fallback_item_image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f",
+					"width": 6000,
+					"height": 4000
+				},
+				"url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f",
+				"width": 6000,
+				"height": 4000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "became",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]
