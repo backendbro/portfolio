@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { asImageSrc, isFilled } from "@prismicio/client";
+import { asImageSrc, isFilled, Content } from "@prismicio/client";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MdArrowOutward } from "react-icons/md";
-import { Content } from "@prismicio/client";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,10 +29,10 @@ export default function ContentList({
   const [hovering, setHovering] = useState(false);
   const lastMousePos = useRef({ x: 0, y: 0 });
 
-  const urlPrefix = contentType === "Blogs" ? "/blog" : "/project";
+  console.log(contentType);
+  const urlPrefix = contentType === "Blog" ? "/blog" : "/project";
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const ctx = gsap.context(() => {
       itemsRef.current.forEach((item) => {
         gsap.fromTo(
@@ -69,12 +68,11 @@ export default function ContentList({
       // Calculate speed and direction
       const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const ctx = gsap.context(() => {
         // Animate the image holder
         if (currentItem !== null) {
           const maxY = window.scrollY + window.innerHeight - 350;
-          const maxX = window.innerWidth - 250;
+          const maxX = window.innerWidth - 245;
 
           gsap.to(revealRef.current, {
             x: gsap.utils.clamp(0, maxX, mousePos.x - 110),
@@ -82,6 +80,7 @@ export default function ContentList({
             rotation: speed * (mousePos.x > lastMousePos.current.x ? 1 : -1), // Apply rotation based on speed and direction
             ease: "back.out(2)",
             duration: 1.3,
+            opacity: 1,
           });
           gsap.to(revealRef.current, {
             opacity: hovering ? 1 : 0,

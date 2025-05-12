@@ -13,7 +13,11 @@ const Bounded = React.forwardRef<HTMLDivElement, BoundedProps>(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       <Comp
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ref={ref}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         className={clsx("px-4 py-10 md:px-6 md:py-14 lg:py-16", className)}
         {...restProps}
       >

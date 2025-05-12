@@ -16,7 +16,7 @@ export default function Avatar({ image, className }: AvatarProps) {
   const component = useRef(null);
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const ctx = gsap.context(() => {
+    gsap.context(() => {
       gsap.fromTo(
         ".avatar",
         {
