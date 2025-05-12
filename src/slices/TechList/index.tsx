@@ -28,7 +28,6 @@ const TechList: FC<TechListProps> = ({ slice }) => {
   const component = useRef(null);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const ctx = gsap.context(() => {
       // create as many GSAP animations and/or ScrollTriggers here as you want...
       const tl = gsap.timeline({
