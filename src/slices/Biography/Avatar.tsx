@@ -10,12 +10,14 @@ import { useRef } from "react";
 type AvatarProps = {
   image: ImageField;
   className?: string;
+  alt?: string;
 };
 
-export default function Avatar({ image, className }: AvatarProps) {
+export default function Avatar({ image, className, alt }: AvatarProps) {
+  const imgAlt = alt ?? image.alt ?? "An image";
   const component = useRef(null);
+
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     gsap.context(() => {
       gsap.fromTo(
         ".avatar",
@@ -31,41 +33,41 @@ export default function Avatar({ image, className }: AvatarProps) {
         }
       );
 
-      //   window.onmousemove = (e) => {
-      //     if (!component.current) return; // no component, no animation!
-      //     const componentRect = (
-      //       component.current as HTMLElement
-      //     ).getBoundingClientRect();
-      //     const componentCenterX = componentRect.left + componentRect.width / 2;
+      window.onmousemove = (e) => {
+        if (!component.current) return; // no component, no animation!
+        const componentRect = (
+          component.current as HTMLElement
+        ).getBoundingClientRect();
+        const componentCenterX = componentRect.left + componentRect.width / 2;
 
-      //     const componentPercent = {
-      //       x: (e.clientX - componentCenterX) / componentRect.width / 2,
-      //     };
+        const componentPercent = {
+          x: (e.clientX - componentCenterX) / componentRect.width / 2,
+        };
 
-      //     const distFromCenterX = 1 - Math.abs(componentPercent.x);
+        const distFromCenterX = 1 - Math.abs(componentPercent.x);
 
-      //     gsap
-      //       .timeline({
-      //         defaults: { duration: 0.5, overwrite: "auto", ease: "power3.out" },
-      //       })
-      //       .to(
-      //         ".avatar",
-      //         {
-      //           rotation: gsap.utils.clamp(-2, 2, 5 * componentPercent.x),
-      //           duration: 0.5,
-      //         },
-      //         0
-      //       )
-      //       .to(
-      //         ".highlight",
-      //         {
-      //           opacity: distFromCenterX - 0.7,
-      //           x: -10 + 20 * componentPercent.x,
-      //           duration: 0.5,
-      //         },
-      //         0
-      //       );
-      //   };
+        gsap
+          .timeline({
+            defaults: { duration: 0.5, overwrite: "auto", ease: "power3.out" },
+          })
+          .to(
+            ".avatar",
+            {
+              rotation: gsap.utils.clamp(-2, 2, 5 * componentPercent.x),
+              duration: 0.5,
+            },
+            0
+          )
+          .to(
+            ".highlight",
+            {
+              opacity: distFromCenterX - 0.7,
+              x: -10 + 20 * componentPercent.x,
+              duration: 0.5,
+            },
+            0
+          );
+      };
     });
   });
 
@@ -79,6 +81,7 @@ export default function Avatar({ image, className }: AvatarProps) {
           field={image}
           className="w-full avatar-image"
           imgixParams={{ q: 90 }}
+          alt={imgAlt as ""}
         />
         <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>{" "}
       </div>
